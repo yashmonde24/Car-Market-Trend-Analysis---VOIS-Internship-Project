@@ -2,25 +2,25 @@
 
 1. Background and Overview
 
-Used-car prices get thrown around based on gut feel — "diesel resells better," "low mileage means high price," "avoid second-owner cars." Some of that is true. Some of it isn't. This project pulls 301 real CarDekho listings and checks which factors actually move resale price and by how much, instead of going on instinct.
+Used-car prices get thrown around based on gut feel - "diesel resells better," "low mileage means high price," "avoid second-owner cars." Some of that is true. Some of it isn't. This project pulls 301 real CarDekho listings and checks which factors actually move resale price and by how much, instead of going on instinct.
 
 2. Data Structure Overview
-- 301 rows, 9 original columns — car name, year, selling price, present price, kms driven, fuel type, seller type, transmission, owner count
+- 301 rows, 9 original columns - car name, year, selling price, present price, kms driven, fuel type, seller type, transmission, owner count
 - 299 rows after cleanup — 2 duplicates removed, 0 missing values otherwise
 - 5 engineered fields added on top: Car Age, Depreciation Amount, Depreciation % and Mileage Bucket (0–25k / 25k–50k / 50k–75k / 75k–100k / 100k+ km)
-- No messy nulls to fight here — the real work was in the feature engineering and reading the trends correctly.
+- No messy nulls to fight here - the real work was in the feature engineering and reading the trends correctly.
 
 3. Executive Summary
 - Present Price is the single best predictor of what a car actually resells for (correlation 0.80)
 - Fuel type and who's selling the car matter more than raw mileage.
 - Diesel cars sell for over 2x what Petrol/CNG cars do.
 - Dealer listings sell for roughly 10x what individual sellers get.
-- Mileage's effect is real but not linear — it barely correlates with price directly, but depreciation climbs steadily as mileage buckets go up.
-- Most cars are priced modestly — median selling price is ₹3.6L well below the ₹4.66L average which a few expensive listings are dragging up.
+- Mileage's effect is real but not linear - it barely correlates with price directly, but depreciation climbs steadily as mileage buckets go up.
+- Most cars are priced modestly - median selling price is ₹3.6L well below the ₹4.66L average which a few expensive listings are dragging up.
 
 4. Insights Deep Dive
 
-- Present Price drives Selling Price. Correlation of 0.80 — the strongest relationship in the dataset. Any pricing logic should start here, not with age or    mileage.
+- Present Price drives Selling Price. Correlation of 0.80 - the strongest relationship in the dataset. Any pricing logic should start here, not with age or    mileage.
 
 - Diesel commands a real premium. Average ₹6.9L vs ~₹3.0–3.1L for Petrol and CNG. Worth noting: there are no diesel automatics in this data, so this reads as a fuel-type effect, not a transmission one.
 
@@ -33,11 +33,11 @@ Used-car prices get thrown around based on gut feel — "diesel resells better,"
 - Ownership history has a visible penalty, but tread carefully: 96.3% of listings have zero previous owners, and the "3 owners" group is a single car. That last data point isn't a trend, it's an outlier with a sample size of one.
 
 5. Recommendations
-- Use Present Price as the anchor variable in any pricing or valuation model — it carries the most signal
-- Price by mileage bucket, not raw kilometers — a linear model will miss the real relationship
-- Treat fuel type and seller type as separate pricing tiers, not features to average across
-- Benchmark against median price, not mean — the mean is skewed by a small number of high-value listings
-- Don't build age-based pricing rules past ~15 years old without collecting more data first — the current sample is too thin there
+- Use Present Price as the anchor variable in any pricing or valuation model — it carries the most signal.
+- Price by mileage bucket, not raw kilometers - a linear model will miss the real relationship.
+- Treat fuel type and seller type as separate pricing tiers, not features to average across.
+- Benchmark against median price, not mean - the mean is skewed by a small number of high-value listings.
+- Don't build age-based pricing rules past ~15 years old without collecting more data first — the current sample is too thin there.
 
 6. Assumptions and Limitations
 - 299 rows is a small dataset — some subgroups (CNG cars, diesel automatics, 3-owner cars) barely exist, so those splits aren't statistically solid.
@@ -46,14 +46,14 @@ Used-car prices get thrown around based on gut feel — "diesel resells better,"
 - This is a directional analysis for decision-support, not a production-ready valuation model.
 
 7. Future Enhancements
--Bring in more records to properly test the thin subgroups (diesel automatics, high-mileage cars, multi-owner cars)
-- Add a proper regression or ML model now that the key predictors are identified, rather than relying on correlation alone
-- Pull in brand/model-tier data — "Car_Name" wasn't used in this pass, and it likely explains some of what's currently attributed to seller type
-- Track price over time (if repeat listings become available) to separate genuine depreciation from one-off pricing decisions
+-Bring in more records to properly test the thin subgroups (diesel automatics, high-mileage cars, multi-owner cars).
+- Add a proper regression or ML model now that the key predictors are identified, rather than relying on correlation alone.
+- Pull in brand/model-tier data — "Car_Name" wasn't used in this pass, and it likely explains some of what's currently attributed to seller type.
+- Track price over time (if repeat listings become available) to separate genuine depreciation from one-off pricing decisions.
 
 8. Deliverables
-- Car_Market_Trend_Analysis.ipynb — full analysis notebook (data cleaning, feature engineering, EDA, charts)
-- Car_Market_Trend_Analysis.pptx — presentation deck summarizing findings for a non-technical audience
+- Car_Market_Trend_Analysis.ipynb — full analysis notebook (data cleaning, feature engineering, EDA, charts).
+- Car_Market_Trend_Analysis.pptx — presentation deck summarizing findings for a non-technical audience.
 
 9. Output Demo
   Link : 
