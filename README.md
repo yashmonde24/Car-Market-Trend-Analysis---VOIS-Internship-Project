@@ -55,3 +55,6 @@ Used-car prices get thrown around based on gut feel — "diesel resells better,"
 - Car_Market_Trend_Analysis.ipynb — full analysis notebook (data cleaning, feature engineering, EDA, charts)
 - Car_Market_Trend_Analysis.pptx — presentation deck summarizing findings for a non-technical audience
 
+9. Output Demo
+  Link : 
+
