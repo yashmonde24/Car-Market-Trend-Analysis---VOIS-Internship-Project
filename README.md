@@ -2,7 +2,7 @@
 
 1. Background and Overview
 
-Used-car prices get thrown around based on gut feel - "diesel resells better," "low mileage means high price," "avoid second-owner cars." Some of that is true. Some of it isn't. This project pulls 301 real CarDekho listings and checks which factors actually move resale price and by how much, instead of going on instinct.
+  Used-car prices get thrown around based on gut feel - "diesel resells better," "low mileage means high price," "avoid second-owner cars." Some of that is true.    Some of it isn't. This project pulls 301 real CarDekho listings and checks which factors actually move resale price and by how much, instead of going on           instinct.
 
 2. Data Structure Overview
 - 301 rows, 9 original columns - car name, year, selling price, present price, kms driven, fuel type, seller type, transmission, owner count
